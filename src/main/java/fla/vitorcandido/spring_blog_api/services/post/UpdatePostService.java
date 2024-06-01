@@ -12,8 +12,11 @@ import java.util.Optional;
 
 @Service
 public class UpdatePostService {
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
+
+    public UpdatePostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
 
     public void updatePost(UpdatePostDto updatePostDto) {
         Optional<PostEntity> postOptional = this.postRepository.findById(updatePostDto.id);

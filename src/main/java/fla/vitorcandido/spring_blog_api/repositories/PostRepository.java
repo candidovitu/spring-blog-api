@@ -6,4 +6,5 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PostRepository extends MongoRepository<PostEntity, String> { }
+public interface PostRepository extends MongoRepository<PostEntity, String> {
+}

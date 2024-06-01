@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CreatePostService {
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
+
+    public CreatePostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
 
     public void createPost(CreatePostDto createPostDto) {
         PostEntity postEntity = new PostEntity();

@@ -6,33 +6,33 @@ import fla.vitorcandido.spring_blog_api.entities.MessageResponseEntity;
 import fla.vitorcandido.spring_blog_api.entities.PostEntity;
 import fla.vitorcandido.spring_blog_api.services.post.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Description;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Tag( name = "Post" )
 @RestController
 @RequestMapping("/post")
 public class PostController {
-    @Autowired
-    private CreatePostService createPostService;
+    private final CreatePostService createPostService;
+    private final UpdatePostService updatePostService;
+    private final DeletePostService deletePostService;
+    private final GetPostService getPostService;
+    private final ListPostsService listPostsService;
 
-    @Autowired
-    private UpdatePostService updatePostService;
-
-    @Autowired
-    private DeletePostService deletePostService;
-
-    @Autowired
-    private GetPostService getPostService;
-
-    @Autowired
-    private ListPostsService listPostsService;
+    public PostController(
+        CreatePostService createPostService,
+        UpdatePostService updatePostService,
+        DeletePostService deletePostService,
+        GetPostService getPostService,
+        ListPostsService listPostsService
+    ) {
+       this.createPostService = createPostService;
+       this.updatePostService = updatePostService;
+       this.deletePostService = deletePostService;
+       this.getPostService    = getPostService;
+       this.listPostsService  = listPostsService;
+    }
 
     @PostMapping
     public MessageResponseEntity createPost(@RequestBody CreatePostDto createPostDto) {

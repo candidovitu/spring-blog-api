@@ -11,8 +11,11 @@ import java.util.Optional;
 
 @Service
 public class GetPostService {
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
+
+    public GetPostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
 
     public PostEntity getPost(String postId) {
         Optional<PostEntity> post = this.postRepository.findById(postId);

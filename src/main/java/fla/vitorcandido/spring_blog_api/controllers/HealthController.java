@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/health")
 public class HealthController {
-    @Autowired
-    private GetHealthService getHealthService;
+    private final GetHealthService getHealthService;
+
+    public HealthController(GetHealthService getHealthService) {
+        this.getHealthService = getHealthService;
+    }
 
     @GetMapping
     public ResponseEntity<HealthEntity> getHealth() {

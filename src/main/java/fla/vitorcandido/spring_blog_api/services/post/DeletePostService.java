@@ -6,8 +6,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DeletePostService {
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
+
+    public DeletePostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
 
     public void deletePost(String postId) {
         this.postRepository.deleteById(postId);

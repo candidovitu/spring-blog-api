@@ -12,12 +12,14 @@ import java.util.Optional;
 
 @Service
 public class ListPostsService {
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
+
+    public ListPostsService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
 
     public List<PostEntity> listPosts() {
-        List<PostEntity> posts = this.postRepository.findAll();
-        return posts;
+        return this.postRepository.findAll();
     }
 
 }
