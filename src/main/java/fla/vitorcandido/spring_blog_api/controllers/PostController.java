@@ -34,13 +34,13 @@ public class PostController {
     @Autowired
     private ListPostsService listPostsService;
 
-    @PutMapping
+    @PostMapping
     public MessageResponseEntity createPost(@RequestBody CreatePostDto createPostDto) {
         this.createPostService.createPost(createPostDto);
         return new MessageResponseEntity("Successfully created post");
     }
 
-    @PatchMapping
+    @PutMapping
     public MessageResponseEntity updatePost(@RequestBody UpdatePostDto updatePostDto) {
         this.updatePostService.updatePost(updatePostDto);
         return new MessageResponseEntity("Successfully updated post");
